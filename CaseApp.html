@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Custom Case App</title>
+    <script src="ClientGlobalContext.js.aspx"></script>
+    <script src="cog_/Scripts/Common/require.js" data-main="cog_CaseApp"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="ctlrCases">
+        <h3>Cases</h3>
+        <div style="float:left;width:600px">
+            <table>
+                <tr><th>Ticket #</th><th>Title</th><th>Date Created</th></tr>
+                <tr ng-repeat="c in cases">
+                    <td ng-click="loadCase(c)"><a href="#" style="text-decoration:none">{{c.TicketNumber}}</a></td>
+                    <td>{{c.Title}}</td>
+                    <td>{{c.CreatedOn.getMonth() + '/' + c.CreatedOn.getDate() + '/' + c.CreatedOn.getFullYear()}}</td>
+                </tr>
+            </table>
+        </div>
+        <div style="margin-left:620px;">
+            <h4>Case Info: {{current.TicketNumber}}</h4>
+            <table>
+                <tr><th style="text-align:left;">Title:</th><td>{{current.Title}}</td></tr> 
+                <tr><th style="text-align:left;">Customer:</th><td>{{current.CustomerId.Name}}</td></tr>
+                <tr><th style="text-align:left;">Date Created:</th><td>{{ current.CreatedOn }}</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
